@@ -1,0 +1,74 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title> Área dos Professores </title>
+{% endblock %}
+
+{% block content %}
+    <div class="card table-container">
+            
+        <div class="header">  
+            
+            <a href="/teachers/create">NOVO</a>
+
+            <form action="/teachers" method="GET">
+
+                <input 
+                    type="text"
+                    name='filter'
+                    placeholder='Nome ou Acompanhamento'
+                    value='{{ filter }}'
+                >
+                <button type="submit">Filtrar</button>
+
+            </form>
+
+        </div>
+
+        <table width='100%'>
+
+            <thead>
+                <tr>
+                    <th>Professores</th>
+                    <th>Acompanhamento</th>
+                    <th>Alunos</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for teacher in teacher %}
+                    <tr>
+                        <td>
+                            <span style="background-image: url({{ teacher.avatar_url }})"></span>
+                            {{ teacher.name }}
+                        </td>
+                    
+                        <td>
+                            
+                            <span>{{ teacher.subjects_taught }}</span>
+                            
+                        </td>
+
+                        <td style="text-align: center">
+                            
+                            <span>{{ teacher.total_students }}</span>
+                            
+                        </td>
+
+                        <td> <a href="/teachers/{{ teacher.id }}">Ver</a> </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+
+    </div>
+{% endblock %}

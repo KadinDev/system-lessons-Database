@@ -1,0 +1,83 @@
+<div class="item">
+    <div>Avatar URL</div>
+    <input 
+        type="url" 
+        name="avatar_url"
+        placeholder="https://" 
+        value=" {{ teacher.avatar_url }} "
+    >    
+</div>
+
+<div class="item">
+    <div>Nome Completo</div>
+    <input 
+        type="text"
+        name="name"
+        placeholder="Digite seu nome"
+        value="{{teacher.name}}"
+    >    
+</div>
+
+<div class="item">
+    <div>Data de Nascimento</div>
+    <input 
+        type="date"
+        name="birth_date"
+        value="{{teacher.birth_date}}"   
+
+    >
+</div>
+
+<div class="item">
+    <div>Grau de Escolaridade</div>
+    <select name="education_level">
+        <option value="Ensino Médio Completo">Ensino Médio Completo</option> 
+        <option value="Ensino Superior Completo">Ensino Superior Completo</option>
+        <option value="Mestrado">Mestrado</option>
+        <option value="Doutorado">Doutorado</option>
+        
+    </select>
+</div>
+
+<div class="item">
+    <div>Tipo de Aula</div>
+    <div>
+        <span> 
+            <input 
+                type="radio" 
+                name="class_type" 
+                value="Presencial" 
+                
+                {% if teacher.class_type == 'Presencial' %}
+                    checked
+                {% endif %}
+
+            >  Presencial 
+        </span>
+
+        <span> 
+            <input 
+                type="radio" 
+                name="class_type" 
+                value="Distância" 
+
+                {% if teacher.class_type == 'Distância' %}
+                    checked
+                {% endif %}
+            > À Distância 
+        </span>
+    </div>    
+</div>
+
+<div class="item" id="endItem">
+    <div>Área de Atuação</div>
+    <input 
+        type="text"
+        name="subjects_taught"
+        placeholder="Separe por vírgula o que irá ensinar."
+        value="{{ teacher.subjects_taught }}"   
+
+    >
+</div>
+
+<button type="submit"> Salvar </button>

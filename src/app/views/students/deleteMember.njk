@@ -1,0 +1,14 @@
+<script>
+
+
+    const confirmDelete = document.querySelector('#confirm-delete')
+
+    confirmDelete.addEventListener('submit', function(event){
+        const del = confirm('Deseja Deletar?')
+
+        if ( !del ) {
+            event.preventDefault()
+        }
+    })
+
+</script>

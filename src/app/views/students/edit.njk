@@ -1,0 +1,44 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title> Informações de {{ student.name }} </title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <section 
+            class="avatar"
+            style="background: url('{{ student.avatar_url }}') no-repeat center center / cover"
+        >  </section>
+
+        <section class="details">
+
+            <form method="POST" action="/students?_method=PUT">
+        
+                <h3> Editar Aluno </h3>
+
+                {% include 'students/fields.njk' %}    
+                
+                <!-- Se não estiver esse input hidden quando clicar em salvar alterações 
+                não irá funcionar, não encontrará o id do professor -->
+                <input type="hidden" name="id" value="{{ student.id }}">
+
+            </form>
+
+            <form id="confirm-delete" action="/students?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value="{{ student.id }}">
+                <button id="form-delete" type="submit">Deletar</button>
+            </form>
+            
+        </section>
+
+        {% include 'students/deleteMember.njk' %}
+
+
+    </div>
+    
+
+    
+
+{% endblock %}

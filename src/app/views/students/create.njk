@@ -1,0 +1,23 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title> Cadastro de Alunos </title>
+{% endblock %}
+
+{% block content %}
+
+    <form class="card" method="POST" action="/students">
+        
+        <section 
+            style="background: url('https://source.unsplash.com/collection/288892') no-repeat center center / cover "
+            class="avatar"
+        > </section>
+        <section class="details">
+
+            <h3> Novo Aluno </h3>
+
+            {% include 'students/fields.njk' %}    
+
+        </section>
+    </form>
+{% endblock %}

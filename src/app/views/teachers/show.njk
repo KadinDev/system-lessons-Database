@@ -1,0 +1,65 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title> {{ teacher.name }} </title>
+{% endblock %}
+
+{% block content %}
+
+    <form class="card" method="POST" action="/teachers">
+        
+        <section 
+            class="avatar"
+            style="background: url({{ teacher.avatar_url }}) no-repeat center center / cover "
+        >
+                
+        </section>
+        <section class="details">
+
+            <h3> Detalhes</h3>
+
+            <div class="item">
+                <div>Nome Completo</div>
+                <div> {{ teacher.name }} </div>
+            </div>
+
+            <div class="item">
+                <div> Idade </div>
+                <div> {{ teacher.birth_date }} </div>   
+            </div>
+
+            <div class="item">
+                <div>Grau de Escolaridade</div>
+
+                <div> {{ teacher.education_level }} </div>
+                
+            </div>
+
+            <div class="item">
+                <div>Tipo de Aula</div>
+                <div>
+                    {{ "Presencial" if teacher.class_type == "Presencial" else 'À Distância' }}
+                    
+                </div>    
+            </div>
+
+            <div class="item" id="endItem">
+                <div>Área de Atuação</div>
+                <div>
+                    {% for service in teacher.subjects_taught %}
+                        <span> {{ service }} </span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="item" id="endItem">
+                <div>Desde</div>
+                <div> <span>{{ teacher.created_at }}</span>  </div>
+            </div>
+
+            <a href="/teachers/{{teacher.id}}/edit"><button type="button"> EDITAR </button></a>
+
+        </section>
+
+    </form>
+{% endblock %}

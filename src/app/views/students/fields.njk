@@ -1,0 +1,85 @@
+<div class="item">
+    <div>Avatar URL</div>
+    <input 
+        type="url" 
+        name="avatar_url"
+        placeholder="https://" 
+        value="{{ student.avatar_url }}"
+    >    
+</div>
+
+<div class="item">
+    <div>Nome Completo</div>
+    <input 
+        type="text"
+        name="name"
+        placeholder="Qual seu nome?"
+        value="{{student.name}}"
+    >    
+</div>
+
+<div class="item">
+    <div>Data de Nascimento</div>
+    <input 
+        type="date"
+        name="birth"
+        value="{{student.birth}}"
+    >
+</div>
+
+<div id="email" class="item">
+    <div>E-mail</div>
+    <input 
+        type="email"
+        name="email"
+        value="{{student.email}}"  
+        placeholder="Digite seu E-mail"
+    >
+</div>
+
+<div  class="item">
+    <div>Formação</div>
+    <select name="formaction">
+        <option value="1° Ano Completo">1° Ano</option> 
+        <option value="2° Ano Completo">2° Ano</option>
+        <option value="3° Ano Completo">3° Ano</option>
+        
+    </select>
+</div>
+
+
+<div id="formacao" class="item">
+    <div>Hobby</div>
+    <input 
+        type="text"
+        name="hobby"
+        value="{{student.hobby}}"
+        placeholder="Seu Hobby"
+    >
+</div>
+
+<div class="item">
+
+    <div>Professor (a)</div>
+
+    <select name="teacher">
+
+        {% for teacher in teacherOptions %}
+
+            <option value="{{teacher.id}}"
+
+                {% if student.teacher_id == teacher.id %} selected {% endif %} >
+
+                {{ teacher.name }}
+
+            </option> 
+
+        {% endfor %}        
+
+    </select>
+
+</div>
+
+
+
+<button style="margin-top: 20px" type="submit"> Salvar </button>
